@@ -1,0 +1,112 @@
+[
+            {
+            "contact": "Leonardo Nieva",
+            "region": "Argentina",
+            "company": "AGEA",
+            "position": "Sysadmin",
+            "channel": [
+                            {
+                                "comunication": "Facebook",
+                                "user_account": "elnegronieva@hotmail.com",
+                                "preferences": "No molestar"
+                            },
+                            {
+                                "comunication":"Whatsapp",
+                                "user_account":"152251255",
+                                "preferences": "Canal preferido"
+                            }
+                        ],
+            "interet": "76",
+            "email": "ejemplo@gmail.com"
+            },
+            {
+            "contact": "Fernando Carlos",
+            "region": "Argentina",
+            "company": "Telefonica",
+            "position": "Administracion",
+            "channel": [ 
+                            { 
+                                "comunication":"Twitter",
+                                "user_account":"elnegronieva@hotmail.com",
+                                "preferences":"No molestar"
+                            }
+                        ],
+            "interet": "10",
+            "email": "ejemplo@gmail.com"
+            },
+            {
+            "contact": "Flavia Morena",
+            "region": "Colombia",
+            "company": "Techint",
+            "position": "Contadora",
+            "channel": [ 
+                            {
+                                "comunication":"Facebook",
+                                "user_account":"elnegronieva@hotmail.com",
+                                "preferences":"No molestar"
+                            },
+                            {
+                                "comunication":"Facebook",
+                                "user_account":"elnegronieva@hotmail.com",
+                                "preferences":"No molestar"
+                            },
+                            {
+                                "comunication":"Facebook",
+                                "user_account":"elnegronieva@hotmail.com",
+                                "preferences":"No molestar"
+                            },
+                            {
+                                "comunication":"Facebook",
+                                "user_account":"elnegronieva@hotmail.com",
+                                "preferences":"No molestar"
+                            },
+                            {
+                                "channel":"Whatsapp",
+                                "user_account":"152251255",
+                                "preferences":"Canal preferido"
+                            }
+                        ],
+            "interet": "80",
+            "email": "ejemplo@gmail.com"
+            },
+            {
+                "contact": "Nina",
+                "region": "Argentina",
+                "company": "AGEA",
+                "position": "Pesada",
+                "channel": [
+                                {
+                                    "comunication": "Facebook",
+                                    "user_account": "elnegronieva@hotmail.com",
+                                    "preferences": "No molestar"
+                                },
+                                {
+                                    "comunication":"Whatsapp",
+                                    "user_account":"152251255",
+                                    "preferences": "Canal preferido"
+                                }
+                            ],
+                "interet": "76",
+                "email": "ejemplo@gmail.com"
+                },
+                {
+                    "contact": "Claudia",
+                    "region": "Argentina",
+                    "company": "AGEA",
+                    "position": "Pesada",
+                    "channel": [
+                                    {
+                                        "comunication": "Facebook",
+                                        "user_account": "elnegronieva@hotmail.com",
+                                        "preferences": "No molestar"
+                                    },
+                                    {
+                                        "comunication":"Whatsapp",
+                                        "user_account":"152251255",
+                                        "preferences": "Canal preferido"
+                                    }
+                                ],
+                    "interet": "76",
+                    "email": "ejemplo@gmail.com"
+                    }
+]

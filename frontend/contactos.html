@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DATA WAREHOUSE - Contactos</title>   
+    <!-- Favicon-->
+    <!-- <link rel="icon" type="image/x-icon" href="img/favicon.ico" />  -->
+    <link rel="icon" type="image/png" href="https://sc.acamica.com/icons/1j7w9h/favicon-32x32.png" sizes="32x32">
+    <!-- <script src="/js/access.js"></script> -->
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/contactos.css">
+    <!-- <link rel="stylesheet" href="./css/range.css"> -->
+    
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-xl">
+            <a class="navbar-brand" href="#!">LOGO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link">Contactos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Compañias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/usuarios.html">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Región/Ciudad</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container-xl">
+        <h1 class="mt-5 fw-bold">Contactos</h1>
+        <div class="search_upload_export">
+            <div class="search_button_form">
+                <form class="search_button">
+                    <input type="search" id="input" class="form-control form-control-dark col-11" placeholder="Search..." aria-label="Search">
+                    <i class="flecha_search fas fa-angle-down"></i>
+                    <button type="button" id="button_search" class="btn btn-outline-primary ml-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+                <form class="search_user disable">
+                    <div class="search_row">
+                        <label for="contact_add">Nombre del contacto:</label>
+                        <input class="search_input" id="search_input_contact" type="text" name="contact_add" placeholder="Introduce el nombre del contacto">
+                    </div>
+                    <div class="search_row">
+                        <label for="position_add">Cargo:</label>
+                        <input class="search_input" id="search_input_position" type="text" name="position_add" placeholder="Introduce el cargo del contacto">
+                    </div>
+                    <div class="search_row">
+                        <label for="pais">Pais/Region:</label><br>
+                        <select class="select_pais select_all form-text" name="pais" id="pais" required >
+                            <option class="select" selected value>Todos</option>
+                        </select>
+                    </div>
+                    <div class="search_row">
+                        <label for="compania">Compañia:</label><br>
+                        <select class="select_compania select_all form-text" name="compania" id="compania" required >
+                            <option class="select" selected value>Todos</option>
+                        </select>
+                    </div>
+                    <div class="search_row">
+                        <label for="channel">Canal favorito:</label><br>
+                        <select class="select_channel select_all form-text" name="channel" id="channel" required >
+                            <option class="select" selected value>Cualquiera</option>
+                        </select>
+                    </div>
+                    <div class="search_row">
+                        <label for="interest">Interes:</label><br>
+                        <select class="select_interest select_all form-text" name="interest" id="interest" required >
+                            <option class="select" selected value>Cualquiera</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="upload_export_add">
+                <label for="import" type="button" class="upload btn btn-outline-primary ml-2">
+                    <i class="fas fa-arrow-up"></i>
+                </label>
+                <input type="file" name="import" id="import" style="display: none;" accept=".csv">
+                <div class="container_export">
+                    <button class="export_contact">
+                        Exportar Contactos
+                        <i class="flecha fas fa-angle-down"></i>
+                    </button>
+                    <div class="export_type disable">
+                        <div id="export_select">Exportar seleccionados</div>
+                        <div>Todos los filtrados</div>
+                    </div>
+                    </div>
+                </div>
+                <button class="add_contact" data-toggle="modal" data-target="#myModal">Agregar Contacto</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-xl">
+        <div class="text-center mt-5">
+            <table 
+            id="table" 
+            class="table-hover"
+            data-pagination="true"
+            data-ajax-options="ajaxOptions"
+            data-page-list="[10, 25, 50, 100, all]"
+            data-show-footer="true"
+            data-id-field="id"
+            ></table>
+        </div>
+    </div>
+
+    <!--MODAL ADD USER-->
+    <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-newcontact">
+              <h4 class="modal-title newcontact">Nuevo contacto</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+                <form class="modal-body modal-center">
+                  <div class="form-border">
+                    <div class="content-profile ml-3">
+                      <div class="circle">
+                        <i class="fas fa-user"></i>
+                        <div class="btn-photo-container">
+                          <button type="button" class="btn-photo">
+                            <i class="fas fa-camera"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>  
+                    <div class="ml-3 change-width">
+                      <label for="validationCustom01" class="form-text">Nombre<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control-profile" id="validationCustom01" required>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="validationCustom02" class="form-text">Apellido<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control-profile" id="validationCustom02" required>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="validationCustom03" class="form-text">Cargo<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control-profile" id="validationCustom03" aria-describedby="inputGroupPrepend" required>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="validationCustom04" class="form-text">Email<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control-profile" id="validationCustom04" aria-describedby="inputGroupPrepend" required>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="validationCustom05" class="form-text">Companía<span class="text-danger">*</span></label>
+                      <input type="text" class="form-control-profile" id="validationCustom05" aria-describedby="inputGroupPrepend" placeholder="Ingresar nombre de compañía" required>
+                    </div>
+                  </div>
+                  <!-- <div class="d-flex w-100 justify-content-center"> -->
+                  <div class="form-border-city">
+                    <div class="ml-3 change-width">
+                      <label for="region" class="form-text">Region</label>
+                      <select class="form-control-profile" name="region" id="region" >
+                        <option class="select form-control-profile" selected value>Seleccionar region</option>
+                        <option class="select">Todos</option>
+                      </select>
+                      
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="pais_form" class="form-text">Pais</label>
+                      <select class="form-control-profile" name="pais_form" id="pais_form">
+                        <option class="select form-control-profile" selected value>Seleccionar pais</option>
+                        <option class="select">Todos</option>
+                      </select>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="ciudad" class="form-text">Ciudad</label>
+                      <select class="form-control-profile" name="ciudad" id="ciudad">
+                        <option class="select" selected value>Seleccionar ciudad</option>
+                        <option class="select">Todos</option>
+                      </select>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="direccion" class="form-text">Direccion</label>
+                      <input type="text" class="form-control-profile" id="direccion" placeholder="Ingrese una direccion">
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="validationCustom05" class="form-text">Interés</label>
+                      <div class="slidecontainer">
+                        <div class="progress"></div>
+                        <input type="range" min="0" max="100" step="5" class="slider" id="myRange" value="0">
+                        <datalist id="l">
+                          <option class="option-before"></option>
+                          <option class="option-before"></option>
+                          <option ></option>
+                          <option class="option-before"></option>
+                          <option ></option>
+                          <option class="option-before"></option>
+                          <option ></option>
+                          <option class="option-before"></option>
+                          <option class="option-before"></option>
+                        </datalist>
+                      </div>
+                    </div>
+                    <div class="ml-3">
+                      <select id="select_progress" class="form-control-profile" name="interes">
+                        <option class="textInput">0 %</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-border-city">
+                    <div class="ml-3 change-width">
+                      <label for="modal_channel" class="form-text">Canal de contacto</label>
+                      <select class="form-control-profile modal_channel" name="modal_channel" >
+                        <option class="select form-control-profile modal_channel_option" selected value>Seleccionar canal</option>
+                        <!-- <option class="select">Todos</option> -->
+                      </select>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="form_user" class="form-text">Cuenta de usuario</label>
+                      <input type="text" class="form-control-profile" name="form_user" id="form_user" placeholder="@ejemplo">
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="form_preferent" class="form-text">Preferencias</label>
+                      <select class="form-control-profile" name="form_preferent" id="form_preferent">
+                        <option class="select" selected value>Sin preferncia</option>
+                        <option class="select">Todos</option>
+                      </select>
+                    </div>
+                    <div class="ml-3 change-width">
+                      <label for="add_channel" class="form-text">Preferencias</label>
+                      <button type='button' class="btnAddProfile" name="add_channel" id="add_channel">
+                        <i class="fas fa-plus"></i>
+                        <span class="select">Agregar canal</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="btnSubmit">
+                    <button type="cancel" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-secondary" >Guardar contacto</button>
+                  </div>
+                </form>
+            
+        </div>
+      </div>
+
+    <!--MODAL MODIFY-->
+    <div class="modal" id="modify_User" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="test"></div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="/js/app.js"></script>
+    <script src="/js/formatter.js"></script>
+    <script src="/js/contactos.js"></script>
+    <script src="/js/CSVExport.js"></script>
+</body>
+</html>
